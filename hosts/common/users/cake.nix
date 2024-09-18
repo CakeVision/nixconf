@@ -24,6 +24,5 @@
   };
 
   home-manager.users.cake =
-    import cake/${config.networking.hostName}.nix;
-  fonts.fontconfig.enable = true;
+    import cake/lynx.nix;
 }
