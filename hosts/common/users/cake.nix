@@ -21,5 +21,5 @@
     ];
   };
   home-manager.users.cake =
-    import cake/${config.networking.hostName}.nix;
+    import cake/lynx.nix;
 }
