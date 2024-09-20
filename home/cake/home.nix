@@ -27,6 +27,7 @@
   [
     python311Packages.pybind11
     python311Packages.cppy
+    libgcc
     findutils
     jetbrains.clion
     xorg.libX11
@@ -34,11 +35,8 @@
     zsh # zsh
     bat # bat
     ninja # ninja
-    llvmPackages_12.libcxxClang
-    gnumake
     brave
     nerdfonts
-    libgcc
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -47,7 +45,7 @@
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
