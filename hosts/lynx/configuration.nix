@@ -112,7 +112,6 @@
     git
     wget
     home-manager
-    nerdfonts
   ];
 
 

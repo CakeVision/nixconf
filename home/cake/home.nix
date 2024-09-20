@@ -21,7 +21,24 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; let
+    python311Packages = pkgs.python311Packages;
+  in
+  [
+    python311Packages.pybind11
+    python311Packages.cppy
+    findutils
+    jetbrains.clion
+    xorg.libX11
+    cmake # cmake
+    zsh # zsh
+    bat # bat
+    ninja # ninja
+    llvmPackages_12.libcxxClang
+    gnumake
+    brave
+    nerdfonts
+    libgcc
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
