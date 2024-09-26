@@ -27,18 +27,20 @@
     python311Packages = pkgs.python311Packages;
   in
   [
-    python311Packages.pybind11
-    python311Packages.cppy
-    libgcc
-    findutils
+    #  python311Packages.pybind11
+    #  python311Packages.cppy
+    #  libgcc
+    #  findutils
     jetbrains.clion
-    xorg.libX11
+    #xorg.libX11
     cmake # cmake
     zsh # zsh
+    oh-my-posh
     bat # bat
     ninja # ninja
     brave
     nerdfonts
+
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
