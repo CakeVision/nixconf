@@ -122,9 +122,12 @@
 
 
     extraConfigBeforePlugins = '' 
+
+      set-option -g default-command "/run/current-system/sw/bin/bash"
       set-option -sa terminal-overrides ",xterm*:Tc"
       set -g mouse on
-           
+
+
       set -g base-index 1
       set -g pane-base-index 1
       set-window-option -g pane-base-index 1
@@ -139,9 +142,7 @@
 
       ];
 
-    extraConfig = ''
-      if-shell "test -f ~/.bashrc" "source ~/.bashrc"
-    '';
+
   };
 
   # List packages installed in system profile. To search, run:
