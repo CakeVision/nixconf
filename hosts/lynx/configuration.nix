@@ -105,6 +105,45 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Add tmux system-wide
+  programs.tmux = {
+    enable = true;
+    keyMode = "vi";
+    shortcut = "C-Space";
+    # keyMode = vi sets this settings in the tmux.conf
+    #   bind h select-pane -L
+    #   bind j select-pane -D 
+    #   bind k select-pane -U
+    #   bind l select-pane -R
+    # defaultShortcut = "C-Space";
+    # unbind C-b
+    # set -g prefix C-Space
+    # bind C-Space send-prefix
+
+
+    extraConfigBeforePlugins = '' 
+      set-option -sa terminal-overrides ",xterm*:Tc"
+      set -g mouse on
+           
+      set -g base-index 1
+      set -g pane-base-index 1
+      set-window-option -g pane-base-index 1
+      set-option -g renumber-windows on
+
+      '';
+    plugins = with pkgs.tmuxPlugins;
+      [
+        yank
+        catppuccin
+        vim-tmux-navigator
+
+      ];
+
+    extraConfig = ''
+      if-shell "test -f ~/.bashrc" "source ~/.bashrc"
+    '';
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
