@@ -90,6 +90,20 @@
   #    #  thunderbird
   #  ];
   #};
+  # define extraGroups
+  users.extraGroups = {
+    haproxy = {
+      gid = 1001;
+    };
+  };
+  #define extraUsers
+  users.extraUsers.haproxy = {
+    isSystemUser = true;
+    uid = 1001;
+    group = "haproxy";
+    extraGroups = [ "networkmanager" ];
+    shell = "/bin/false";
+  };
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
@@ -105,6 +119,51 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # thought about adding haproxy as a service, but the need to define the config in the system build is 
+  # not fit for development usage, only for deployment
+  #
+  # add haproxy to the ssystem
+  # services.haproxy =
+  #   {
+  #     enable = true;
+  #     user = "haproxy";
+  #     group = "haproxy";
+  #     config = ''
+  #              # Global settings
+  #       global
+  #           log /dev/log local0
+  #           log /dev/log local1 notice
+  #           maxconn 2000
+  #           daemon
+  #           stats socket /run/haproxy/admin.sock mode 660 level admin
+  #           stats timeout 30s
+
+  #       # Default settings
+  #       defaults
+  #           log global
+  #           mode http
+  #           option httplog
+  #           option dontlognull
+  #           timeout connect 5000ms
+  #           timeout client  50000ms
+  #           timeout server  50000ms
+  #           maxconn 2000
+
+  #       # Frontend configuration (listens on port 25000)
+  #       frontend echo_frontend
+  #           bind *:25000
+  #           default_backend echo_backend
+
+  #       # Backend configuration (round-robin to Go echo servers)
+  #       backend echo_backend
+  #           balance roundrobin
+  #           option httpchk GET /
+  #           server echo1 127.0.0.1:1323 check
+  #           server echo2 127.0.0.1:1324 check
+  #           server echo3 127.0.0.1:1325 check
+
+  #     '';
+  #   };
   # Add tmux system-wide
   programs.tmux = {
     enable = true;

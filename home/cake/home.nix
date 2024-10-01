@@ -39,8 +39,8 @@
       brave
       nerdfonts
       android-studio
-      haproxy
       vscode
+      haproxy
 
       # # Adds the 'hello' command to your environment. It prints a friendly
       # # "Hello, world!" when run.
