@@ -115,6 +115,7 @@
     #   bind j select-pane -D 
     #   bind k select-pane -U
     #   bind l select-pane -R
+    #
     # defaultShortcut = "C-Space";
     # unbind C-b
     # set -g prefix C-Space
