@@ -192,7 +192,9 @@
       set -g pane-base-index 1
       set-window-option -g pane-base-index 1
       set-option -g renumber-windows on
-
+      
+      bind | split-window -h 
+      bind v split-window -v
       '';
     plugins = with pkgs.tmuxPlugins;
       [

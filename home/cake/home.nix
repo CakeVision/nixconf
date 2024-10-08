@@ -38,10 +38,10 @@
       ninja # ninja
       brave
       nerdfonts
-      android-studio
       vscode
       haproxy
 
+      #android-tools
       # # Adds the 'hello' command to your environment. It prints a friendly
       # # "Hello, world!" when run.
       # pkgs.hello
