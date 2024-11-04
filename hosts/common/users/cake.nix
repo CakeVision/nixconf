@@ -28,6 +28,6 @@
 
   home-manager.users.cake =
     #   import cake/${config.networking.hostName}.nix;
-    import cake/lynx.nix;
+    import ../../../home/cake/lynx.nix;
   # home-manager.users.haproxy
 }

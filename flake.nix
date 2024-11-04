@@ -16,7 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
   };
 
   outputs = { self, home-manager, nixpkgs, ... }@inputs:
@@ -45,8 +44,9 @@
         "cake@lynx" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."x86_64-linux";
           extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ ./home/your-name/your-host.nix ];
+          modules = [ ./home/cake/home.nix ];
         };
       };
     };
+
 }

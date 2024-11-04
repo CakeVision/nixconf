@@ -30,7 +30,11 @@
       #  libgcc
       #  findutils
       jetbrains.clion
+      jetbrains.pycharm-professional
+      obsidian
       #xorg.libX11
+      ripgrep
+      zoxide
       cmake # cmake
       zsh # zsh
       oh-my-posh
@@ -40,7 +44,7 @@
       nerdfonts
       vscode
       haproxy
-
+      
       #android-tools
       # # Adds the 'hello' command to your environment. It prints a friendly
       # # "Hello, world!" when run.

@@ -48,7 +48,7 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
+  services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
@@ -112,6 +112,7 @@
   programs.nix-ld.libraries = with pkgs; [
     # Add any missing dynamic libraries for unpackaged programs
     # here, NOT in environment.systemPackages
+    stdenv.cc.cc.lib
   ];
   # Install firefox.
   programs.firefox.enable = true;
@@ -213,6 +214,11 @@
     vim
     git
     wget
+    neovim
+    cargo
+    rustc
+    gcc
+    gnumake
     home-manager
   ];
 
@@ -227,6 +233,19 @@
 
   # List services that you want to enable:
   services.blueman.enable = true;
+  #Get xremap and set some remaps
+#  services.xremap = {
+#      enable = true;
+#      config = {
+#        keymap = {
+#            name = "Global keymap";
+#            remap = {
+#              "KEY_GRAVE" = "KEY_ESC";     # Maps the $/~ key to Escape
+#              "KEY_ESC" = "KEY_GRAVE";     # Maps the Escape key to $/~
+#              "KEY_CAPSLOCK" = "KEY_LEFTCTRL";  # Maps Caps Lock to Left Control$
+#          };
+#      };
+#  };
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 

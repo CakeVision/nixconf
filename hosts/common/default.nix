@@ -2,7 +2,7 @@
 
 { lib, inputs, outputs, ... }: {
   imports = [
-    ./users
+    ./users/default.nix
     inputs.home-manager.nixosModules.home-manager
   ];
   home-manager = {
@@ -40,7 +40,7 @@
       experimental-features = "nix-command flakes";
       trusted-users = [
         "root"
-        "your-user"
+        "cake"
       ]; # Set users that are allowed to use the flake command
     };
     gc = {
