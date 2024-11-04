@@ -233,18 +233,20 @@
 
   # List services that you want to enable:
   services.blueman.enable = true;
-  #Get xremap and set some remaps
-  services.xremap = {
-      enable = true;
-      config = {
-        keymap = {
-            name = "Global keymap";
-            remap = {
-              "KEY_GRAVE" = "KEY_ESC";     # Maps the $/~ key to Escape
-              "KEY_ESC" = "KEY_GRAVE";     # Maps the Escape key to $/~
-              "KEY_CAPSLOCK" = "KEY_LEFTCTRL";  # Maps Caps Lock to Left Control$
+  # Keyboard Remaps
+   services.keyd = {
+    enable = true;
+    keyboards = {
+      default = {
+        settings = {
+          main = {
+            capslock = "leftcontrol";
+            grave = "escape";
+            escape = "grave";
           };
+        };
       };
+    };
   };
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
