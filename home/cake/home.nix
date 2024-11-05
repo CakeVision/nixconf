@@ -44,6 +44,8 @@
       nerdfonts
       vscode
       haproxy
+      xclip
+
       
       #android-tools
       # # Adds the 'hello' command to your environment. It prints a friendly
