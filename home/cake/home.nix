@@ -45,6 +45,7 @@
       vscode
       haproxy
       xclip
+      obs-studio
 
       
       #android-tools
