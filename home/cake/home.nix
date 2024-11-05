@@ -46,7 +46,7 @@
       haproxy
       xclip
       obs-studio
-
+      uv
       
       #android-tools
       # # Adds the 'hello' command to your environment. It prints a friendly
