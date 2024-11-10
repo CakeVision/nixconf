@@ -119,7 +119,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
+  virtualisation.docker.enable = true;
   # thought about adding haproxy as a service, but the need to define the config in the system build is 
   # not fit for development usage, only for deployment
   #

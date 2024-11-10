@@ -12,6 +12,7 @@
       extraGroups = [
         "wheel"
         "networkmanager"
+        "docker"
         "audio"
         "video"
         "input"
