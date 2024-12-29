@@ -47,7 +47,7 @@
       xclip
       obs-studio
       uv
-      
+      virt-viewer    
       #android-tools
       # # Adds the 'hello' command to your environment. It prints a friendly
       # # "Hello, world!" when run.

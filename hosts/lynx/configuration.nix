@@ -230,7 +230,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
   # List services that you want to enable:
   services.blueman.enable = true;
   # Keyboard Remaps
