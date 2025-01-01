@@ -50,14 +50,10 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
-
+  services.spice-vdagentd.enable = true;
+  services.qemuGuest.enable = true;
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
-  # Enable CUPS to print documents.
+    # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
@@ -233,20 +229,20 @@
   # List services that you want to enable:
   services.blueman.enable = true;
   # Keyboard Remaps
-   services.keyd = {
-    enable = true;
-    keyboards = {
-      default = {
-        settings = {
-          main = {
-            capslock = "leftcontrol";
-            grave = "escape";
-            escape = "grave";
-          };
-        };
-      };
-    };
-  };
+  #   services.keyd = {
+  #    enable = true;
+  #    keyboards = {
+  #      default = {
+  #        settings = {
+  #          main = {
+  #            capslock = "leftcontrol";
+  #            grave = "escape";
+  #            escape = "grave";
+  #          };
+  #        };
+  #      };
+  #    };
+  #  };
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
