@@ -22,7 +22,6 @@
   fonts.fontconfig.enable = true;
   # The home.packages option allows you to install Nix packages into your
   # environment.
-
   home.packages = with pkgs;
     [
       #  python311Packages.pybind11
@@ -43,12 +42,14 @@
       brave
       nerdfonts
       vscode
-      haproxy
       xclip
       obs-studio
       uv
       virt-viewer    
       sqlite
+      unityhub
+      zig_0_12
+    cloudflare-warp
       #android-tools
       # # Adds the 'hello' command to your environment. It prints a friendly
       # # "Hello, world!" when run.

@@ -15,6 +15,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernelParams = [
+    "usbhid.mousepoll=1"
+    "usbhid.kbpoll=1"
+    "input.resolution_mult=1"
+    "tsc=reliable"
+    "clocksource=tsc"
+  ];
   #_# networking.hostName = "nixos"; # Define your hostname.
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -43,18 +50,30 @@
     LC_TIME = "ro_RO.UTF-8";
   };
 
+  hardware.graphics = {
+    enable =true;
+  };
+
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
+  services.displayManager.defaultSession = "plasma";
   services.xserver.enable = true;
-
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6= {
+    enable = true;
+  };
   services.spice-vdagentd.enable = true;
   services.qemuGuest.enable = true;
+  services.xserver.videoDrivers = ["qxl" "virtio"];
+  services.xrdp.enable = true;
+  services.xrdp.port = 3389;
+  services.xrdp.defaultWindowManager = "startplasma-x11";
+  services.xrdp.openFirewall = true;
   # Configure keymap in X11
     # Enable CUPS to print documents.
   services.printing.enable = true;
+
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -71,7 +90,19 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
+virtualisation = {
+  libvirtd = {
+    qemu.ovmf.enable = true;  # Enables UEFI firmware support
+    qemu.runAsRoot = false;   # Runs QEMU as non-root user for security
+    qemu.options = [
+      "-enable-kvm"
+      "-machine type=q35,accel=kvm"
+      "-device virtio-vga-gl"
+      "-display gtk, gl=on"
+    ];
+    
+  };
+};
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -216,8 +247,34 @@
     gcc
     gnumake
     home-manager
+    spice-vdagent
   ];
 
+  services.postgresql = {
+    enable = true;
+    ensureDatabases = [ "mydatabase" ];
+    enableTCPIP = true;
+    port = 5432;
+    authentication = pkgs.lib.mkOverride 10 ''
+      #...
+      #type database DBuser origin-address auth-method
+      local all       all     trust
+      # ipv4
+      host  all      all     127.0.0.1/32   trust
+      # ipv6
+      host all       all     ::1/128        trust
+    '';
+    initialScript = pkgs.writeText "backend-initScript" ''
+      CREATE ROLE nixcloud WITH LOGIN PASSWORD 'nixcloud' CREATEDB;
+      CREATE DATABASE taskappdb;
+      GRANT ALL PRIVILEGES ON DATABASE taskappdb TO nixcloud;
+    '';
+  };
+  services.cloudflare-warp = {
+    enable = true;
+
+  };
+ services.cloudflared.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
