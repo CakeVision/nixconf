@@ -14,7 +14,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
+  hardware.keyboard.qmk.enable = true;
   #_# networking.hostName = "nixos"; # Define your hostname.
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -220,8 +220,10 @@
     gcc
     gnumake
     home-manager
+    via
   ];
 
+  services.udev.packages = [ pkgs.via ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -233,20 +235,20 @@
   # List services that you want to enable:
   services.blueman.enable = true;
   # Keyboard Remaps
-   services.keyd = {
-    enable = true;
-    keyboards = {
-      default = {
-        settings = {
-          main = {
-            capslock = "leftcontrol";
-            grave = "escape";
-            escape = "grave";
-          };
-        };
-      };
-    };
-  };
+  #  services.keyd = {
+  #   enable = true;
+  #   keyboards = {
+  #     default = {
+  #       settings = {
+  #         main = {
+  #           capslock = "leftcontrol";
+  #           grave = "escape";
+  #           escape = "grave";
+  #         };
+  #       };
+  #     };
+  #   };
+  #};
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
